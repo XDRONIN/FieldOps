@@ -5,7 +5,7 @@ from app import crud, models, schemas
 from app.api import deps
 from app.core.security import create_access_token
 from datetime import timedelta
-from app.core.config import settings
+from app.core import config
 from fastapi.security import OAuth2PasswordRequestForm
 from typing import Any
 
@@ -45,7 +45,7 @@ def login(
     elif not user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
 
-    access_token_expires = timedelta(minutes=settings.JWT_EXPIRE_MINUTES)
+    access_token_expires = timedelta(minutes=config.settings.JWT_EXPIRE_MINUTES)
     return {
         "access_token": create_access_token(
             user.email, expires_delta=access_token_expires

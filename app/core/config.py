@@ -44,5 +44,7 @@ def get_settings():
         return TestSettings()
     return Settings()
 
+
 # Create a settings instance that can be imported
 settings = get_settings()
+
