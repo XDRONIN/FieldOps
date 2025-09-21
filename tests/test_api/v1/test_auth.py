@@ -1,4 +1,3 @@
-import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 from app.core.config import get_settings
@@ -47,7 +46,6 @@ def get_auth_headers(client: TestClient, email: str, password: str) -> dict:
     return {"Authorization": f"Bearer {access_token}"}
 
 
-@pytest.mark.skip(reason="Failing with 403 Forbidden")
 def test_read_user_me(client: TestClient, db_session: Session):
     settings = get_settings()
     email = "testme@example.com"
@@ -63,7 +61,6 @@ def test_read_user_me(client: TestClient, db_session: Session):
     assert data["email"] == email
 
 
-@pytest.mark.skip(reason="Failing with 403 Forbidden")
 def test_update_user_me(client: TestClient, db_session: Session):
     settings = get_settings()
     email = "testupdate@example.com"

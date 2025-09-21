@@ -17,8 +17,8 @@ To get the FieldOps application running locally, follow these steps.
 
 2.  **Set Up the Environment**
     - Create a virtual environment: `python -m venv venv`
-    - Activate it: `cd venv/Scripts` then `activate`
-    - Install dependencies: `pip install -r requirements.txt` from project root
+    - Activate it: `source venv/bin/activate`
+    - Install dependencies: `pip install -r requirements.txt`
 
 3.  **Configure Environment Variables**
     - Create a `.env` file from the `.env.example` file.

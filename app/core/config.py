@@ -7,7 +7,7 @@ class Settings:
     DB_PORT: int = 5432
     DB_NAME: str = "fieldops"
     DB_USER: str = "postgres"
-    DB_PASSWORD: str = "Akash1001"
+    DB_PASSWORD: str = "yourpassword"
 
     TEST_DATABASE_URL: str = "sqlite:///./test.db"
 
@@ -44,7 +44,4 @@ def get_settings():
         return TestSettings()
     return Settings()
 
-
-# Create a settings instance that can be imported
 settings = get_settings()
-
