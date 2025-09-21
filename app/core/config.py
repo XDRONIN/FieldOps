@@ -43,3 +43,5 @@ def get_settings():
     if os.environ.get("ENV") == "test":
         return TestSettings()
     return Settings()
+
+settings = get_settings()
