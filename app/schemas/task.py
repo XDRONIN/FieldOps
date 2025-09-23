@@ -16,6 +16,9 @@ class TaskCreate(BaseModel):
 class TaskUpdate(TaskBase):
     pass
 
+class TaskStatusUpdate(BaseModel):
+    status: TaskStatus
+    
 # Properties shared by models stored in DB
 class TaskInDBBase(TaskBase):
     id: int
