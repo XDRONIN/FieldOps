@@ -45,7 +45,7 @@ def login(
     elif not user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
 
-    access_token_expires = timedelta(minutes=config.settings.JWT_EXPIRE_MINUTES)
+    access_token_expires = timedelta(minutes=config.settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     return {
         "access_token": create_access_token(
             user.email, expires_delta=access_token_expires

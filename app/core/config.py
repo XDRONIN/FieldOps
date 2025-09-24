@@ -1,13 +1,14 @@
 import os
 from functools import lru_cache
+from pydantic_settings import BaseSettings
 
-class Settings:
+class Settings(BaseSettings):
     # Database
-    DB_HOST: str = "localhost"
-    DB_PORT: int = 5432
-    DB_NAME: str = "fieldops"
-    DB_USER: str = "postgres"
-    DB_PASSWORD: str = "Akash1001"
+    DB_HOST: str
+    DB_PORT: int
+    DB_NAME: str
+    DB_USER: str
+    DB_PASSWORD: str
 
     TEST_DATABASE_URL: str = "sqlite:///./test.db"
 
@@ -18,9 +19,9 @@ class Settings:
         return f"postgresql://{self.DB_USER}:{self.DB_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.DB_NAME}"
 
     # JWT
-    JWT_SECRET: str = "supersecretkey"
-    JWT_ALGORITHM: str = "HS256"
-    JWT_EXPIRE_MINUTES: int = 60
+    SECRET_KEY: str
+    ALGORITHM: str
+    ACCESS_TOKEN_EXPIRE_MINUTES: int
 
     # File Uploads
     UPLOAD_DIR: str = "./uploads"
@@ -31,6 +32,10 @@ class Settings:
     # Project
     PROJECT_NAME: str = "FieldOps"
     API_V1_STR: str = "/api/v1"
+
+    class Config:
+        env_file = ".env"
+
 
 class TestSettings(Settings):
     ENV: str = "test"
