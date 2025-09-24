@@ -21,7 +21,7 @@ def get_current_user(
 ) -> User:
     try:
         payload = jwt.decode(
-            token, settings.JWT_SECRET, algorithms=[settings.JWT_ALGORITHM]
+            token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM]
         )
         token_data = schemas.TokenData(**payload)
     except (jwt.JWTError, ValidationError) as e:
