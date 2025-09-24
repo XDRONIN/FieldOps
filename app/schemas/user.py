@@ -19,11 +19,13 @@ class UserCreate(UserBase):
 class UserUpdate(UserBase):
     password: str | None = None
 
+from pydantic import ConfigDict
+
 class UserInDBBase(UserBase):
     id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
+    
 
 # Additional properties to return via API
 class User(UserInDBBase):
