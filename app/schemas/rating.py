@@ -16,14 +16,15 @@ class RatingCreate(RatingCreateBody):
 class RatingUpdate(RatingBase):
     pass
 
+from pydantic import ConfigDict
+
 # Properties shared by models stored in DB
 class RatingInDBBase(RatingBase):
     id: int
     user_id: int
     request_id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Properties to return to client
 class Rating(RatingInDBBase):
