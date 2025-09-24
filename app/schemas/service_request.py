@@ -17,14 +17,15 @@ class ServiceRequestCreate(ServiceRequestBase):
 class ServiceRequestUpdate(ServiceRequestBase):
     pass
 
+from pydantic import ConfigDict
+
 # Properties shared by models stored in DB
 class ServiceRequestInDBBase(ServiceRequestBase):
     id: int
     user_id: int
     status: RequestStatus
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Properties to return to client
 class ServiceRequest(ServiceRequestInDBBase):

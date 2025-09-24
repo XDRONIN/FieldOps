@@ -21,6 +21,7 @@ def setup_db():
     Base.metadata.create_all(bind=engine)
     yield
     Base.metadata.drop_all(bind=engine)
+    engine.dispose()
     os.remove("./test.db")
 
 @pytest.fixture(scope="function")

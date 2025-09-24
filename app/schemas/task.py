@@ -18,15 +18,16 @@ class TaskUpdate(TaskBase):
 
 class TaskStatusUpdate(BaseModel):
     status: TaskStatus
-    
+
+from pydantic import ConfigDict    
+
 # Properties shared by models stored in DB
 class TaskInDBBase(TaskBase):
     id: int
     request_id: int
     worker_id: int
 
-    class Config:
-        orm_mode = True
+    model_config = ConfigDict(from_attributes=True)
 
 # Properties to return to client
 class Task(TaskInDBBase):
