@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, Field
 from app.models.user import Role
 
 # Shared properties
@@ -12,7 +12,7 @@ class UserBase(BaseModel):
 # Properties to receive via API on creation
 class UserCreate(UserBase):
     email: EmailStr
-    password: str
+    password: str = Field(..., min_length=8)
     role: Role
 
 # Properties to receive via API on update
