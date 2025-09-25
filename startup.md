@@ -21,7 +21,7 @@ To get the FieldOps application running locally, follow these steps.
     - Install dependencies: `pip install -r requirements.txt` from project root
 
 3.  **Configure Environment Variables**
-    - Create a `.env` file from the `.env.example` file.
+    - Create a `.env` file from the `example.env` file.
     - Update the `.env` file with your database credentials and other settings.
 
 4.  **Launch the Database**
@@ -37,6 +37,10 @@ To get the FieldOps application running locally, follow these steps.
 6.  **Run the Application**
     ```sh
     uvicorn app.main:app --reload
+    ```
+7.  **Test the Application**
+    ```sh
+    pytest
     ```
 
 The API will be accessible at `http://localhost:8000`, with interactive documentation at `http://localhost:8000/docs`.
