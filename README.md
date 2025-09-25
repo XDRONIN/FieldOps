@@ -32,8 +32,8 @@ To get a local copy up and running, follow these simple steps.
 
 1.  **Clone the repo**
     ```sh
-    git clone https://github.com/your_username_/fieldops.git
-    cd fieldops
+    git clone https://github.com/XDRONIN/FieldOps.git
+    cd FieldOps
     ```
 2.  **Create a virtual environment and activate it**
     ```sh
@@ -51,13 +51,17 @@ To get a local copy up and running, follow these simple steps.
     ```sh
     docker-compose up -d
     ```
-6.  **Run database migrations**
+    or use local PgAdmin if available
+7.  **Run database migrations**
     ```sh
     alembic upgrade head
     ```
-7.  **Run the application**
+8.  **Run the application**
     ```sh
     uvicorn app.main:app --reload
     ```
-
+9.  **Test the application**
+    ```sh
+    pytest
+    ```
 The application will be available at `http://localhost:8000`. The API documentation can be found at `http://localhost:8000/docs`.
